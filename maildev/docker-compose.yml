@@ -1,0 +1,21 @@
+services:
+    maildev:
+        image: maildev/maildev
+        restart: unless-stopped
+        labels:
+            traefik.enable: true
+            traefik.http.routers.maildev.entrypoints: web, websecure
+            traefik.http.routers.maildev.rule: Host(`example.com`)
+            traefik.http.routers.maildev.service: maildev
+            traefik.http.services.maildev.loadbalancer.server.port: 1080
+            traefik.http.routers.maildev.tls: true
+            traefik.http.routers.maildev.tls.certresolver: production
+            traefik.http.routers.maildev.middlewares: maildev-auth
+            traefik.http.middlewares.maildev-auth.basicauth.users: ”htpasswd user:pwd here"
+        networks:
+            - proxy
+            
+networks:
+    proxy:
+        external: true
+        name: traefik

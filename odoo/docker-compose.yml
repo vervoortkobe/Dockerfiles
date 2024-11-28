@@ -1,0 +1,9 @@
+version: "3.3"
+services:
+    web:
+        image: odoo:17.0
+        ports:
+            - "8069:8069"
+        volumes:
+            - ./custom_addons:/mnt/extra-addons
+            # - ./config:/etc/odoo

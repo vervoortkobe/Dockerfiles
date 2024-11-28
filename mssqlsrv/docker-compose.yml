@@ -1,0 +1,21 @@
+name: app-gatam
+services:
+  database:
+    restart: "always"
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 1433:1433
+    volumes:
+      - "db-volume:/var/opt/mssql"
+    environment:
+      - "ACCEPT_EULA=Y"
+      - "MSSQL_SA_PASSWORD=${MSSQLSRV_PASSWORD}"
+    networks:
+      - database
+    container_name: database-app-gatam
+
+volumes:
+  db-volume:
+
+networks:
+  database:

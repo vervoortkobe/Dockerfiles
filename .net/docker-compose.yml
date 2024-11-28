@@ -1,0 +1,14 @@
+services:
+    server:
+        image: portainer/portainer-ce:latest
+        restart: unless-stopped
+        ports:
+            - 9000:9000
+        command: --admin-password-file /tmp/portainer_password
+        volumes:
+            - ./admin.txt:/tmp/portainer_password
+            - portainer-data:/data
+            - /var/run/docker.sock:/var/run/docker.sock
+            
+volumes:
+    portainer-data:
