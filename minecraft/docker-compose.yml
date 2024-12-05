@@ -1,0 +1,12 @@
+services:
+  minecraft:
+    container_name: minecraft-server
+    build:
+      context: .
+    ports:
+      - "25565:25565"
+    networks:
+      - minecraft
+
+networks:
+  minecraft:
