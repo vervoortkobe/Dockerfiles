@@ -4,11 +4,15 @@ services:
     restart: "always"
     container_name: minecraft-server
     build:
-      context: .
+      context: ./mcserver
     ports:
-      - "25565:25565"
+      - "35565:35565"
+    volumes:
+      - ./mcserver:/data
     networks:
       - minecraft
 
+volumes:
+  minecraft_data:
 networks:
   minecraft:
