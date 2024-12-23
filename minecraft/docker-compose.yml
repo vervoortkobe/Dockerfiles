@@ -1,7 +1,7 @@
 name: minecraft-server
 services:
   minecraft:
-    restart: "always"
+    restart: always
     container_name: minecraft-server
     build:
       context: ./mcserver
