@@ -7,6 +7,8 @@ services:
       context: ./mcserver
     ports:
       - "35565:35565"
+    stdin_open: true
+    tty: true
     volumes:
       - ./mcserver:/data
     networks:

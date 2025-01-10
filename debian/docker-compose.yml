@@ -1,0 +1,11 @@
+name: debian
+services:
+  debian:
+    image: debian:bullseye-slim
+    restart: always
+    container_name: debian
+    init: true
+    network_mode: "host"
+    command: bash
+    stdin_open: true
+    tty: true
